@@ -1,6 +1,9 @@
-# Iniciando um projeto Node.js com TypeScript
+# Criando o Projeto
 
-Crie um diretório para o projeto e acesse-o pelo vscode, abra o terminal e siga os passos abaixo.
+Crie um novo diretório para o seu projeto e acesse-o no VSCode.
+
+Abra o terminal e execute os seguintes comandos:
+
 
 ```bash
 npm init -y
@@ -13,7 +16,10 @@ touch src/app.ts
 
 ## Configuranado o `tsconfig.json`
 
-Mude a linha ```"outDir": "./",``` para ```"outDir": "./dist",``` e adicione a linha ```"rootDir": "./src",```, seu arquivo de configuração do compilador do TypeScript ficará mais ou menos assim.
+Abra o arquivo tsconfig.json gerado e localize a linha "outDir": "./",.
+Substitua por "outDir": "./dist",.
+Adicione a linha "rootDir": "./src",.
+O arquivo deve ficar parecido com o seguinte:
 
 ```json
 {
@@ -30,9 +36,9 @@ Mude a linha ```"outDir": "./",``` para ```"outDir": "./dist",``` e adicione a l
 }
 ```
 
-## Configurando o `package.json`
+## Atualizando o 'package.json'
 
-Adicione o seguinte script ao seu `package.json`
+No arquivo 'package.json', adicione o seguinte script para facilitar o desenvolvimento:
 
 ```json
 "scripts": {
@@ -40,9 +46,9 @@ Adicione o seguinte script ao seu `package.json`
 }
 ```
 
-## Criando arquivo inicial do servidor
+## Criando o Arquivo Principal do Servidor
 
-Adicione o seguinte código ao arquivo `src/app.ts`
+No arquivo 'src/app.ts', adicione o código abaixo para configurar o servidor:
 
 ```typescript
 import express from 'express';
@@ -63,13 +69,15 @@ app.listen(port, () => {
 });
 ```
 
-## Inicializando o servidor
+## Rodando o Servidor
+
+No terminal, execute o seguinte comando para iniciar o servidor:
 
 ```bash
 npm run dev
 ```
 
-Se tudo ocorrer bem, você verá a mensagem `Server running on port 3333` no terminal.
+Se tudo estiver certo, você verá a mensagem 'Server running on port 3333'.
 
 ## Testando o servidor
 
@@ -77,7 +85,7 @@ Abra o navegador e acesse `http://localhost:3333`, você verá a mensagem `Hello
 
 ## Configurando o banco de dados
 
-Crie um arquivo `database.ts` dentro da pasta `src` e adicione o seguinte código.
+Crie um arquivo chamado 'database.t's na pasta 'src' e adicione o código a seguir para configurar o SQLite:
 
 ```typescript
 import { open } from 'sqlite';
@@ -106,7 +114,9 @@ export async function connect() {
 }
 ```
 
-## Adicionando o banco de dados ao servidor
+## Integrando o Banco de Dados com o Servidor
+
+Atualize o arquivo 'src/app.ts' para incluir o banco de dados:
 
 ```typescript
 import express from 'express';
@@ -140,7 +150,7 @@ app.listen(port, () => {
 
 ## Testando a inserção de dados
 
-Abra o Postman e faça uma requisição POST para `http://localhost:3333/users` com o seguinte corpo.
+Utilize uma ferramenta como o Postman para fazer uma requisição POST para http://localhost:3333/users com o seguinte corpo:
 
 ```json
 {
@@ -149,7 +159,7 @@ Abra o Postman e faça uma requisição POST para `http://localhost:3333/users` 
 }
 ```
 
-Se tudo ocorrer bem, você verá a resposta com o usuário inserido.
+Se a operação for bem-sucedida, você verá a resposta com os dados do usuário inserido:
 
 ```json
 {
@@ -161,7 +171,7 @@ Se tudo ocorrer bem, você verá a resposta com o usuário inserido.
 
 ## Listando os usuários
 
-Adicione a rota `/users` ao servidor.
+Para listar os usuários cadastrados, adicione a rota '/users' ao servidor:
 
 ```typescript
 app.get('/users', async (req, res) => {
