@@ -1,6 +1,6 @@
 # Criando o Projeto
 
-Crie um novo diretório para o seu projeto e acesse-o no VSCode.
+Crie um novo raquel bobona
 
 Abra o terminal e execute os seguintes comandos:
 
