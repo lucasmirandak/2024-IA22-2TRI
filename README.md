@@ -1,6 +1,6 @@
 # Criando o Projeto
 
-Crie um novo raquel bobona
+Crie um novo raquel bobona mais ainda
 
 Abra o terminal e execute os seguintes comandos:
 
