@@ -22,7 +22,9 @@ Adicione a linha "rootDir": "./src" na linha a baixo do outDir,.
 O arquivo deve ficar semelhante a isso:
 
 ```json
-/* Emit */
+{
+  "compilerOptions": {
+    /* Emit */
     // "declaration": true,                              /* Generate .d.ts files from TypeScript and JavaScript files in your project. */
     // "declarationMap": true,                           /* Create sourcemaps for d.ts files. */
     // "emitDeclarationOnly": true,                      /* Only output d.ts files and not JavaScript files. */
@@ -33,8 +35,9 @@ O arquivo deve ficar semelhante a isso:
     "rootDir": "./src",                                   /* Specify an output folder for all emitted files. */
     // "removeComments": true,                           /* Disable emitting comments. */
     // "noEmit": true,                                   /* Disable emitting files from a compilation. */
-    // "importHelpers": true,                            /* Allow importing helper functions from tslib once per project, instead of including them per-file. */
-    // "downlevelIteration": true,
+    // "importHelpers": true,
+  }
+}
 ```
 se por acaso tiver '//' no inicio das linhas do outDir e rootDir, apague 
 ## Alterando o 'package.json'
