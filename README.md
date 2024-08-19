@@ -44,7 +44,7 @@ Não esqueça da virgula ao final de cada linha
 
 ## Alterando o 'package.json'
 
-No arquivo 'package.json', adicione '"dev": "npx nodemon src/app.ts"' na parte de scripts
+No arquivo 'package.json', adicione "dev": "npx nodemon src/app.ts" na parte de scripts
 
 ```json
  "scripts": {
