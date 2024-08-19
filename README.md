@@ -50,7 +50,7 @@ Ficara assim se código
 
 ## Criando o Arquivo Html
 
-No codespace, crie uma pasta chama 'public', e dentro dela crie um arquivo html com o nome de 'index.html'
+No codespace, crie uma pasta chamada 'public', e dentro dela crie um arquivo html com o nome de 'index.html'
 coloque o codigo a seguir nesse arquivo
 
 ```html
@@ -159,7 +159,7 @@ coloque o codigo a seguir nesse arquivo
 
 ## Configurando arquivo o 'app.ts'
 
-Na pasta src em seu codespace, entre no arquivo 'app.ts', e coloque o seguinte código
+Na pasta 'src' em seu codespace, entre no arquivo 'app.ts', e coloque o seguinte código
 
 ```typescript
 import express from 'express'
