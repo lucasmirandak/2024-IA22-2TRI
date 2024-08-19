@@ -46,7 +46,7 @@ No arquivo 'package.json', adicione '"dev": "npx nodemon src/app.ts"' na parte d
     "dev": "nodemon src/app.ts"
   },
 ```
-Ficara assim se código
+Ficara assim seu código
 
 ## Criando o Arquivo Html
 
