@@ -36,6 +36,8 @@ O arquivo deve ficar semelhante a isso:
 }
 ```
 se por acaso tiver '//' no inicio das linhas do outDir e rootDir, apague 
+Não esqueça da virgula ao final de cada linha
+
 ## Alterando o 'package.json'
 
 No arquivo 'package.json', adicione '"dev": "npx nodemon src/app.ts"' na parte de scripts
