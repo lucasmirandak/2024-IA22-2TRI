@@ -14,12 +14,12 @@ mkdir src
 touch src/app.ts
 ```
 
-## Configuranado o `tsconfig.json`
+## Alterando o `tsconfig.json`
 
-Abra o arquivo tsconfig.json gerado e localize a linha "outDir": "./",.
+Abra o arquivo tsconfig.json criado e localize a linha "outDir": "./",.
 Substitua por "outDir": "./dist",.
-Adicione a linha "rootDir": "./src",.
-O arquivo deve ficar parecido com o seguinte:
+Adicione a linha "rootDir": "./src" na linha a baixo do outDir,.
+O arquivo deve ficar semelhante a isso:
 
 ```json
 {
@@ -36,37 +36,125 @@ O arquivo deve ficar parecido com o seguinte:
 }
 ```
 
-## Atualizando o 'package.json'
+## Alterando o 'package.json'
 
-No arquivo 'package.json', adicione o seguinte script para facilitar o desenvolvimento:
+No arquivo 'package.json', adicione '"dev": "npx nodemon src/app.ts"' na parte de scripts
 
 ```json
-"scripts": {
-  "dev": "npx nodemon src/app.ts"
-}
+ "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.ts"
+  },
 ```
+Ficara assim se código
 
-## Criando o Arquivo Principal do Servidor
+## Criando o Arquivo Html
 
-No arquivo 'src/app.ts', adicione o código abaixo para configurar o servidor:
+No codespace, crie uma pasta chama 'public', e dentro dela crie um arquivo html com o nome de 'index.html'
+coloque o codigo a seguir nesse arquivo
 
-```typescript
-import express from 'express';
-import cors from 'cors';
+```html
+<!DOCTYPE html>
+<html lang="en">
 
-const port = 3333;
-const app = express();
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 
-app.use(cors());
-app.use(express.json());
+<body>
+  <form>
+    <input type="text" name="name" placeholder="Nome">
+    <input type="email" name="email" placeholder="Email">
+    <button type="submit">Cadastrar</button>
+  </form>
 
-app.get('/', (req, res) => {
-  res.send('Hello World');
-});
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--  -->
+    </tbody>
+  </table>
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+  <script>
+    // 
+    const form = document.querySelector('form')
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault()
+
+      const name = form.name.value
+      const email = form.email.value
+
+      await fetch('/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email })
+      })
+
+      form.reset()
+      fetchData()
+    })
+
+    // 
+    const tbody = document.querySelector('tbody')
+
+    async function fetchData() {
+      const resp = await fetch('/users')
+      const data = await resp.json()
+
+      tbody.innerHTML = ''
+
+      data.forEach(user => {
+        const tr = document.createElement('tr')
+        tr.innerHTML = `
+          <td>${user.id}</td>
+          <td>${user.name}</td>
+          <td>${user.email}</td>
+          <td>
+            <button class="excluir">excluir</button>
+            <button class="editar">editar</button>
+          </td>
+        `
+
+        const btExcluir = tr.querySelector('button.excluir')
+        const btEditar = tr.querySelector('button.editar')
+
+        btExcluir.addEventListener('click', async () => {
+          await fetch(`/users/${user.id}`, { method: 'DELETE' })
+          tr.remove()
+        })
+
+        btEditar.addEventListener('click', async () => {
+          const name = prompt('Novo nome:', user.name)
+          const email = prompt('Novo email:', user.email)
+
+          await fetch(`/users/${user.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email })
+          })
+
+          fetchData()
+        })
+
+        tbody.appendChild(tr)
+      })
+    }
+
+    fetchData()
+  </script>
+</body>
+
+</html>
 ```
 
 ## Rodando o Servidor
