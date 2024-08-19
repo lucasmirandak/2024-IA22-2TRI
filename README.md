@@ -1,8 +1,8 @@
 # Criando o Projeto
 
-Crie um novo raquel bobona mais aindaghghvghvgh
+Crie um novo repositório em seu GitHub, dentro dele clique no botão em verde ‘code’, va para aba codespace, logo em seguida clique na opção “Create codespace on main” 
 
-Abra o terminal e execute os seguintes comandos:
+dentro do codespace, no terminal coloque os comandos a seguir
 
 
 ```bash
